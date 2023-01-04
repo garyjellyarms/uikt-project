@@ -1,1 +1,8 @@
 .FormApprovalPage {}
+
+.info-text-list{
+    text-align: start;
+}
+.info-text-label{
+    font-weight: bold;
+}
