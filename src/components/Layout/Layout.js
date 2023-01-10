@@ -1,6 +1,4 @@
 import React from 'react';
-
-import UserSiteApplicationForm from '../user-site/login-site/login-site';
 import PropTypes from 'prop-types';
 import ReactDOM from "react-dom/client";
 import CookieConsent from 'react-cookie-consent';
@@ -18,7 +16,13 @@ const Layout = () => (
           <Link to="formapprovalpage">FormApprovalPage</Link>
         </li>
         <li>
-          <Link to="usersite">UserSite</Link>
+          <Link to="userform">UserForm</Link>
+        </li>
+        <li>
+          <Link to="usersiteapproval">User</Link>
+        </li>
+        <li>
+          <Link to="pendingApproval">FormApproval</Link>
         </li>
       </ul>
     </nav>

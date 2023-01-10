@@ -6,6 +6,7 @@ import CookieConsent from "react-cookie-consent";
 import PrivacyPolicy from './components/privacy-policy/privacy-policy';
 import FormApprovalPage from './components/admin-sites/form-approval-page/form-approval-page' 
 import UserSiteApplicationForm from './components/user-site/application-form/application-form';
+import UserSiteApprovalPage from './components/user-site/approval-page/approval-page'
 import Layout from './components/Layout/Layout.js';
 // https://www.npmjs.com/package/react-cookie-consent
 
@@ -17,8 +18,10 @@ function App() {
         <Route path="/" element={<Layout />}>
         <Route index element={<LoginSite />} />
           <Route path="formapprovalpage" element={<FormApprovalPage />} />
-          <Route path="usersite" element={<UserSiteApplicationForm />} />
-        </Route>
+          <Route path="userform" element={<UserSiteApplicationForm />} />
+          <Route path="usersiteapproval" element={<UserSiteApprovalPage />} />
+          <Route path="pendingApproval" element={<FormApprovalPage />}/>
+         </Route>
       </Routes>
       </BrowserRouter>
       <Outlet />
