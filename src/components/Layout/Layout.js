@@ -13,9 +13,6 @@ const Layout = () => (
           <Link to="/">Login</Link>
         </li>
         <li>
-          <Link to="formapprovalpage">FormApprovalPage</Link>
-        </li>
-        <li>
           <Link to="userform">UserForm</Link>
         </li>
         <li>
@@ -23,6 +20,9 @@ const Layout = () => (
         </li>
         <li>
           <Link to="pendingApproval">FormApproval</Link>
+        </li>
+        <li>
+          <Link to="formapprovalpage">FormApprovalPage</Link>
         </li>
       </ul>
     </nav>

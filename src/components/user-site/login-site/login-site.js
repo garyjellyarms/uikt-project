@@ -1,5 +1,6 @@
 import { React, useRef} from 'react';
 import PropTypes from 'prop-types';
+import { json, useNavigate, useState } from "react-router-dom";
 import './login-site.css';
 import {
   MDBBtn,
@@ -17,18 +18,25 @@ from 'mdb-react-ui-kit';
 const LoginSite = () => {
   const emailInputRef = useRef(null);
   const passwordInputRef = useRef(null);
-
+  const navigate = useNavigate()
   const login = () => {
     var user = {
       email : emailInputRef.current.value,
       password : passwordInputRef.current.value
     }
-    alert("LOGIN for " + user['email'] + ", "+ user['password']);
     // ROUTE to application form
+    if(user['email'] === 'user' && user['password'] === 'user'){
+      localStorage.setItem("loginData", JSON.stringify(user))
+      navigate('/usersiteapproval')
+    }
+    else{
+      alert('not registered my guy')
+    }
   }
 
   return (
     <div className="login-site">
+      
       <MDBContainer fluid>
         <MDBRow className='d-flex justify-content-center align-items-center h-100'>
           <MDBCol col='12'>
