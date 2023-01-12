@@ -2,6 +2,7 @@ import { React, useRef} from 'react';
 import PropTypes from 'prop-types';
 import './application-form.css';
 import { json, useNavigate } from "react-router-dom";
+import { useEffect } from 'react';
 import {
   MDBRow,
   MDBCol,
@@ -13,14 +14,26 @@ import {
   MDBCardBody,
 } from 'mdb-react-ui-kit';
 
-const UserSiteApplicationForm = () => {
 
+
+
+
+const UserSiteApplicationForm = () => {
   const izdelekRef = useRef(null);
   const opisRef = useRef(null);
   const tehnicneSpecRef = useRef(null);
   const certRef = useRef(null);
   const klasifRef = useRef(null);
   const navigate = useNavigate()
+  
+  useEffect(() => {
+    (() => {
+      if (!localStorage.getItem('loginData')) {
+        navigate('../')
+      }
+    })();
+  });
+  
   const submit = (event) => {
     var arr = localStorage.getItem('data') !== null ? JSON.parse(localStorage.getItem('data')) : []
     

@@ -22,8 +22,8 @@ const ApprovalPending = () => {
   let loginData = JSON.parse(localStorage.getItem('loginData')) ? JSON.parse(localStorage.getItem('loginData')) : []
 
   function ogledVloge(singleData){
-    const id = singleData.id
-    navigate('/formapprovalpage/?id='+id)
+    localStorage.setItem('id_vloge', singleData.id)
+    navigate('/formapprovalpage')
   }
 
   return (
@@ -35,16 +35,19 @@ const ApprovalPending = () => {
               <MDBCardBody className='p-5 w-100 d-flex flex-column'>
                 <h2 className="fw-bold mb-2 text-center">Seznam vlog</h2>
                 <MDBListGroup style={{ minWidth: '22rem' }} light>
-                  {data.map((d) => {     
+                  {data !== null ? data.map((d) => {     
                       return (
-                        <MDBListGroupItem className='d-flex justify-content-between align-items-center'>
-                          <div>
-                            {d.id} - {d.izdelek}, {loginData.email}
+                        <MDBListGroupItem key={d.id} className='d-flex justify-content-between align-items-center'>
+                          <div className="yep">
+                            Username : {loginData.email}<br/>
+                            id : {d.id}<br/>
+                            izdelek : {d.izdelek}<br/>
+                            status : {d.statusText}<br/>
                           </div>
                           <MDBBtn outline onClick={() => ogledVloge(d)}>Ogled</MDBBtn>
                         </MDBListGroupItem>
                       ) 
-                    })}
+                    }) : null}
                 </MDBListGroup>
               </MDBCardBody>
             </MDBCard>

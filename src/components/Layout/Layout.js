@@ -13,17 +13,17 @@ const Layout = () => (
           <Link to="/">Login</Link>
         </li>
         <li>
-          <Link to="userform">UserForm</Link>
+          <Link to="userform">Fill out form</Link>
         </li>
         <li>
-          <Link to="usersiteapproval">User</Link>
+          <Link to="usersiteapproval">User forms</Link>
         </li>
         <li>
-          <Link to="pendingApproval">FormApproval</Link>
+          <Link to="pendingApproval">Pending Approval</Link>
         </li>
-        <li>
-          <Link to="formapprovalpage">FormApprovalPage</Link>
-        </li>
+        {/* <li>
+          <Link to="formapprovalpage">Approval page</Link>
+        </li> */}
       </ul>
     </nav>
 

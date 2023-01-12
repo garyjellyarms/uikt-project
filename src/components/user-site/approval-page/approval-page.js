@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './approval-page.css';
 import { json, useNavigate, useState } from "react-router-dom";
+import { useEffect } from 'react';
 import {
   MDBRow,
   MDBCol,
@@ -17,14 +18,24 @@ import {
 } from 'mdb-react-ui-kit';
 
 
+
+
 const UserSiteApprovalPage = () => {
   const navigate = useNavigate()
-  
+  useEffect(() => {
+    (() => {
+      if (!localStorage.getItem('loginData')) {
+        navigate('../')
+      }
+    })();
+  });
+
+
   const formFill = () => {
     let str = '../userform'
     navigate(str)
   }
-  let data = localStorage.getItem('data') !== null? JSON.parse(localStorage.getItem('data')) : []
+  let data = localStorage.getItem('data') !== null ? JSON.parse(localStorage.getItem('data')) : []
 
   return (
   <div className="approval-page">
@@ -36,9 +47,9 @@ const UserSiteApprovalPage = () => {
             <MDBCardBody className='p-5 w-100 d-flex flex-column'>
               <h2 className="fw-bold mb-2 text-center">Oddani obrazci</h2>
               <MDBListGroup style={{ minWidth: '22rem' }} light>
-                {data.map((d) => {     
+                {data !== null ? data.map((d) => {     
                   return (
-                    <MDBListGroupItem className='d-flex justify-content-between align-items-center'>
+                    <MDBListGroupItem key={d.id} className='d-flex justify-content-between align-items-center'>
                     <div>
                       <div className='fw-bold'>{d.izdelek}</div>
                       <div className='text-muted'>{d.statusText}</div>
@@ -48,7 +59,7 @@ const UserSiteApprovalPage = () => {
                     </MDBBadge>
                   </MDBListGroupItem>
                   ) 
-                })}
+                }) : null}
               </MDBListGroup>
             </MDBCardBody>
           </MDBCard>

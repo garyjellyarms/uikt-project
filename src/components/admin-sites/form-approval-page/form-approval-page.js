@@ -19,18 +19,31 @@ import { useSearchParams } from 'react-router-dom';
 
 const FormApprovalPage = () => {
   const navigate = useNavigate()
-  const [searchParams, setSearchParams] = useSearchParams();
-  const id = searchParams.get("id");
+  // const [searchParams, setSearchParams] = useSearchParams();
+  // const id = searchParams.get("id");
 
   let data = localStorage.getItem('data') !== null ? JSON.parse(localStorage.getItem('data')) : []
-  const index = data.indexOf(x => x.id == id);
-  const currentData = data[index];
-  let loginData = JSON.parse(localStorage.getItem('loginData')) ? JSON.parse(localStorage.getItem('loginData')) : []
+  const id = JSON.parse(localStorage.getItem('id_vloge'))
+  const currentData = data.find(findObject) // data[index];
+  let index = data.indexOf(currentData)
+  let loginData = localStorage.getItem('loginData') !== null ? JSON.parse(localStorage.getItem('loginData')) : []
 
   function potrdi(){
-    currentData.status = true;
-    currentData.statusText = "Odobreno";
-    navigate('/approval-pending')
+    data[index].status = true;
+    data[index].statusText = "Odobreno";
+    localStorage.setItem('data', JSON.stringify(data))
+    navigate('../pendingApproval')
+  }
+
+  function zavrni(){
+    data[index].status = false
+    data[index].statusText = "Zavrnjeno"
+    localStorage.setItem('data', JSON.stringify(data))
+    navigate('../pendingApproval')
+  }
+  
+  function findObject(application){
+    return application.id === id
   }
   
   return (
@@ -42,40 +55,43 @@ const FormApprovalPage = () => {
               <MDBCardBody className='p-5 w-100 d-flex flex-column'>
                 <h2 className="fw-bold mb-2 text-center">Seznam vlog</h2>
                 <br/>
-                <div class="info-text-list">
-                  <p class="info-text-label">Vloga za podjetje</p>
+                <div className="info-text-list">
+                  <p className="info-text-label">Vloga za podjetje</p>
                   <p>{loginData.email}</p>
                 </div>
                 <hr/>
-                <div class="info-text-list">
-                  <p class="info-text-label">Izdelek</p>
+                <div className="info-text-list">
+                  <p className="info-text-label">Izdelek</p>
                   <p>{currentData.izdelek}</p>
                 </div>
                 <hr/>
-                <div class="info-text-list">
-                  <p class="info-text-label">Opis izdelka</p>
+                <div className="info-text-list">
+                  <p className="info-text-label">Opis izdelka</p>
                   <p>
                   {currentData.opis}
                   </p>
                 </div>
                 <hr/>
-                <div class="info-text-list">
-                  <p class="info-text-label">Tehnične specifikacije</p>
+                <div className="info-text-list">
+                  <p className="info-text-label">Tehnične specifikacije</p>
                   <p>{currentData.tehnicneSpec}</p>
                 </div>
                 <hr/>
-                <div class="info-text-list">
-                  <p class="info-text-label">Certifikati</p>
+                <div className="info-text-list">
+                  <p className="info-text-label">Certifikati</p>
                   <p>{currentData.cert}</p>
                 </div>
                 <hr/>
-                <div class="info-text-list">
-                  <p class="info-text-label">Klasifikacija</p>
+                <div className="info-text-list">
+                  <p className="info-text-label">Klasifikacija</p>
                   <p>{currentData.klasif}</p>
                 </div>
                 <br/>
                 <MDBBtn className='mb-4' type='submit' block onClick={potrdi}>
                   Potrdi
+                </MDBBtn>
+                <MDBBtn className='mb-4' type='submit' block onClick={zavrni}>
+                  Zavrni
                 </MDBBtn>
               </MDBCardBody>
             </MDBCard>
