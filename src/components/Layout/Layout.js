@@ -46,7 +46,7 @@ const Layout = () => (
         }}
       >
         Ta stran uporablja piškotke.{" "}
-        <span style={{ fontSize: "15px" }}><a href="/privacy-policy-page">Izjava o zasebnosti</a></span>
+        <span style={{ fontSize: "15px" }}><a href="/privacypolicy">Izjava o zasebnosti</a></span>
       </CookieConsent>
   </div>
 );
