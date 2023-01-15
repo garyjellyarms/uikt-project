@@ -24,10 +24,13 @@ const LoginSite = () => {
       email : emailInputRef.current.value,
       password : passwordInputRef.current.value
     }
-    // ROUTE to application form
-    if(user['email'] === 'user' && user['password'] === 'user'){
+    if((user['email'] === 'user' && user['password'] === 'user')  || (user['email'] === 'tempuser' && user['password'] === 'tempuser')){
       localStorage.setItem("loginData", JSON.stringify(user))
-      navigate('/usersiteapproval')
+      navigate('/usersiteapproval') 
+    }
+    else if ((user['email'] === 'admin' && user['password'] === 'admin')) {
+      localStorage.setItem("loginData", JSON.stringify(user))
+      navigate('/pendingApproval')
     }
     else{
       alert('not registered my guy')

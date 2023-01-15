@@ -1,4 +1,4 @@
-import React from 'react';
+import {React, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import './form-approval-page.css';
 import {
@@ -18,6 +18,8 @@ import { json, useNavigate } from "react-router-dom";
 import { useSearchParams } from 'react-router-dom';
 
 const FormApprovalPage = () => {
+  
+
   const navigate = useNavigate()
   // const [searchParams, setSearchParams] = useSearchParams();
   // const id = searchParams.get("id");
@@ -27,6 +29,15 @@ const FormApprovalPage = () => {
   const currentData = data.find(findObject) // data[index];
   let index = data.indexOf(currentData)
   let loginData = localStorage.getItem('loginData') !== null ? JSON.parse(localStorage.getItem('loginData')) : []
+
+  useEffect(() => {
+    (() => {
+      let loginData = JSON.parse(localStorage.getItem('loginData')) ? JSON.parse(localStorage.getItem('loginData')) : {email : '', password : ''}
+      if (!(loginData.email === 'admin' && loginData.password === 'admin')) {
+        navigate('../')
+      }
+    })();
+  });
 
   function potrdi(){
     data[index].status = true;
@@ -57,7 +68,7 @@ const FormApprovalPage = () => {
                 <br/>
                 <div className="info-text-list">
                   <p className="info-text-label">Vloga za podjetje</p>
-                  <p>{loginData.email}</p>
+                  <p>{currentData.user}</p>
                 </div>
                 <hr/>
                 <div className="info-text-list">

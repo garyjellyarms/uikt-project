@@ -25,10 +25,11 @@ const UserSiteApplicationForm = () => {
   const certRef = useRef(null);
   const klasifRef = useRef(null);
   const navigate = useNavigate()
-  
+  const user = JSON.parse(localStorage.getItem('loginData'))
   useEffect(() => {
     (() => {
-      if (!localStorage.getItem('loginData')) {
+      let loginData = JSON.parse(localStorage.getItem('loginData')) ? JSON.parse(localStorage.getItem('loginData')) : {email : '', password : ''}
+      if (!((loginData.email === 'user' && loginData.password === 'user') || (loginData.email === 'tempuser' && loginData.password === 'tempuser'))) {
         navigate('../')
       }
     })();
@@ -36,10 +37,19 @@ const UserSiteApplicationForm = () => {
   
   const submit = (event) => {
     var arr = localStorage.getItem('data') !== null ? JSON.parse(localStorage.getItem('data')) : []
-    
+    if(izdelekRef.current.value === ''
+      || opisRef.current.value === ''
+      || tehnicneSpecRef.current.value === ''
+      || certRef.current.value === ''
+      || klasifRef.current.value === '')
+    {
+      alert('izpolnite vse vnosna polja')
+      return
+    }
     var formData = {
       id : arr.length+1,
       izdelek : izdelekRef.current.value,
+      user : user.email,
       opis : opisRef.current.value,
       tehnicneSpec : tehnicneSpecRef.current.value,
       cert : certRef.current.value,

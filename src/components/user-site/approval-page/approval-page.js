@@ -24,19 +24,34 @@ const UserSiteApprovalPage = () => {
   const navigate = useNavigate()
   useEffect(() => {
     (() => {
-      if (!localStorage.getItem('loginData')) {
+      let loginData = JSON.parse(localStorage.getItem('loginData')) ? JSON.parse(localStorage.getItem('loginData')) : {email : '', password : ''}
+      if (!((loginData.email === 'user' && loginData.password === 'user') || (loginData.email === 'tempuser' && loginData.password === 'tempuser'))) {
         navigate('../')
       }
     })();
   });
+
+  const loginData = JSON.parse(localStorage.getItem('loginData')) ? JSON.parse(localStorage.getItem('loginData')) : {email : '', password : ''}
+  
 
 
   const formFill = () => {
     let str = '../userform'
     navigate(str)
   }
-  let data = localStorage.getItem('data') !== null ? JSON.parse(localStorage.getItem('data')) : []
+  function findApplications(arr){
+    let returnArr = []
+    arr.forEach((element) => {
+     if(element.user === loginData.email){
+      returnArr.push(element)
+     } 
+    })
+    return returnArr
+  }
+  let data = findApplications(localStorage.getItem('data') !== null ? JSON.parse(localStorage.getItem('data')): [])
+  if(data !== null && findApplications(data).length >0 ){
 
+  }
   return (
   <div className="approval-page">
     
@@ -47,7 +62,7 @@ const UserSiteApprovalPage = () => {
             <MDBCardBody className='p-5 w-100 d-flex flex-column'>
               <h2 className="fw-bold mb-2 text-center">Oddani obrazci</h2>
               <MDBListGroup style={{ minWidth: '22rem' }} light>
-                {data !== null ? data.map((d) => {     
+                {data !== [] ? data.map((d) => {     
                   return (
                     <MDBListGroupItem key={d.id} className='d-flex justify-content-between align-items-center'>
                     <div>
