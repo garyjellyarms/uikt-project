@@ -28,6 +28,7 @@ function App() {
           <Route path="usersiteapproval" element={<UserSiteApprovalPage />} />
           <Route path="pendingApproval" element={<ApprovalPending />}/>
           <Route path="formapprovalpage" element={<FormApprovalPage />} />
+          <Route path="privacypolicy" element={<PrivacyPolicy />} />
          </Route>
       </Routes>
       </BrowserRouter>
