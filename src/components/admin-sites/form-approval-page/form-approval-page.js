@@ -1,18 +1,12 @@
 import {React, useEffect} from 'react';
-import PropTypes from 'prop-types';
 import './form-approval-page.css';
 import {
   MDBRow,
   MDBCol,
-  MDBInput,
-  MDBCheckbox,
   MDBBtn,
   MDBContainer,
   MDBCard,
-  MDBCardBody,
-  MDBListGroup, 
-  MDBListGroupItem,
-  MDBBadge
+  MDBCardBody
 } from 'mdb-react-ui-kit';
 import { json, useNavigate } from "react-router-dom";
 import { useSearchParams } from 'react-router-dom';

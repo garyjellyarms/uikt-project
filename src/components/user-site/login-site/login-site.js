@@ -1,6 +1,5 @@
 import { React, useRef} from 'react';
-import PropTypes from 'prop-types';
-import { json, useNavigate, useState } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import './login-site.css';
 import {
   MDBBtn,
@@ -9,9 +8,7 @@ import {
   MDBCol,
   MDBCard,
   MDBCardBody,
-  MDBInput,
-  MDBIcon,
-  MDBCheckbox
+  MDBInput
 }
 from 'mdb-react-ui-kit';
 

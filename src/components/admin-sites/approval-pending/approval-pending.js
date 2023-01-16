@@ -4,15 +4,12 @@ import './approval-pending.css';
 import {
   MDBRow,
   MDBCol,
-  MDBInput,
-  MDBCheckbox,
   MDBBtn,
   MDBContainer,
   MDBCard,
   MDBCardBody,
   MDBListGroup, 
-  MDBListGroupItem,
-  MDBBadge
+  MDBListGroupItem
 } from 'mdb-react-ui-kit';
 import { json, useNavigate } from "react-router-dom";
 

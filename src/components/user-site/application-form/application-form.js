@@ -1,13 +1,11 @@
 import { React, useRef} from 'react';
-import PropTypes from 'prop-types';
 import './application-form.css';
-import { json, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect } from 'react';
 import {
   MDBRow,
   MDBCol,
   MDBInput,
-  MDBCheckbox,
   MDBBtn,
   MDBContainer,
   MDBCard,

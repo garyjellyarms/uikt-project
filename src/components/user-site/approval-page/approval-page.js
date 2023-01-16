@@ -1,13 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './approval-page.css';
-import { json, useNavigate, useState } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect } from 'react';
 import {
   MDBRow,
   MDBCol,
-  MDBInput,
-  MDBCheckbox,
   MDBBtn,
   MDBContainer,
   MDBCard,
@@ -16,9 +13,6 @@ import {
   MDBListGroupItem,
   MDBBadge
 } from 'mdb-react-ui-kit';
-
-
-
 
 const UserSiteApprovalPage = () => {
   const navigate = useNavigate()
