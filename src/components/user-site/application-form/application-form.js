@@ -41,7 +41,7 @@ const UserSiteApplicationForm = () => {
       || certRef.current.value === ''
       || klasifRef.current.value === '')
     {
-      alert('izpolnite vse vnosna polja')
+      alert('izpolnite vsa vnosna polja')
       return
     }
     var formData = {
@@ -56,7 +56,7 @@ const UserSiteApplicationForm = () => {
       status : false 
     }
     arr.push(formData)
-    
+
     localStorage.setItem('data', JSON.stringify(arr))
     navigate('../usersiteapproval')
   }
@@ -70,7 +70,7 @@ const UserSiteApplicationForm = () => {
               <MDBCardBody className='p-5 w-100 d-flex flex-column'>
                   <h2 className="fw-bold mb-2 text-center">Obrazec</h2>
                   <br></br>
-                  <p>Za podje tje : FDD d.o.o.</p>  
+                  <p>Za podjetje : {user.email}</p>  
                   <MDBInput ref={izdelekRef} wrapperClass='mb-4' id='1' label='Izdelek' />
                   <MDBInput ref={opisRef} wrapperClass='mb-4' id='form6Example2' label='Opis izdelka' />
                   <MDBInput ref={tehnicneSpecRef} wrapperClass='mb-4' id='form6Example3' label='Tehnične specifikacije' />
