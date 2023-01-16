@@ -49,9 +49,6 @@ const UserSiteApprovalPage = () => {
     return returnArr
   }
   let data = findApplications(localStorage.getItem('data') !== null ? JSON.parse(localStorage.getItem('data')): [])
-  if(data !== null && findApplications(data).length >0 ){
-
-  }
   return (
   <div className="approval-page">
     
